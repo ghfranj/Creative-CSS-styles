@@ -1,0 +1,150 @@
+/* now we need to put some styles to the preloader, but first, let's make the website look like a real website */
+.body{
+    background: url('https://th.bing.com/th/id/R.eb42c568f4f82ec24cb256d6aa6741ea?rik=ZRYJANdHBQaQOg&pid=ImgRaw&r=0');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
+/* these are some similar properties between the 5 leafs, so we use class Leaf */
+/* but first let's make some main properties to the whole preloader, where it appears for few seconds and then goes away */
+
+
+
+.preloader{
+    /* at the beginning we need the preloader to appear and cover the whole page, and then go up, so the destination will be as following */
+    position:fixed;
+    top:-100%;
+    left:0;
+    right:0;
+    background: white;
+    bottom: 100%;
+
+    animation-duration: 7s;
+    /* this animation wil make the preloader appear for one time and stay for 7 seconds*/
+    animation-name:hide_preloader;
+    animation-iteration-count: 1;
+    /* animation-delay: 5s; */
+    padding:10%;
+    /* border: groove; */
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 2px 4px 1px rgb(0 0 0 / 18%);
+}
+@keyframes hide_preloader{
+    /* these properties make the preloader cover the while page where all directions are 0 pixels from the edges of the screen */
+    0%, 90%{
+        top:0 ;
+        bottom: 0;
+    }
+}
+.Leaf{
+    top:70%;
+    position: relative;    
+    margin-top:-200px;
+    left:20%;
+    display: block;
+    height: 200px;
+    width: 200px;
+    border-radius: 50% 50% 50% 50%;
+    background: linear-gradient(217deg, rgba(255, 0, 43, 0.767), rgb(255, 230, 230));
+    animation-name: rotate;
+    transition: transform 1s;
+    animation-duration: 6s;
+    animation-iteration-count:infinite ;
+    animation-timing-function: cubic-bezier(1, 1, 1, 1);
+    transform: rotate(0deg) translate(-70%,-70%);
+    animation-name: rotate;
+}
+/* so now we add the movement part to the leafs */
+
+
+.Leaf1{
+    --x: 70%;
+    --y: 0%;
+}
+.Leaf2{
+    --x: 22%;
+    --y: -67%;
+}
+.Leaf3{
+    --x: -56%;
+    --y: -41%;}
+.Leaf5{
+    --x: 22%;
+    --y: 66%;
+}
+.Leaf4{
+    --x: -57%;
+    --y: 41%;
+}
+
+
+@keyframes rotate 
+{
+    /* these degrees of the angles depends on the number of leafs, and if all translate have the same value all leafs will move in the same direction and appear like one leaf, 
+    so we need to make differend translation, here we can defind variables --x, and --y */
+    /* so each leaf has a different value for x and y */
+    /* and if we want to make them look like a flower or something, we can make the same translation in each stage of the animation */
+    /* here we can make different directions for the x and y so we get another animation as we like */
+    0%{
+        transform: rotate(0deg) translate(var(--x),0);
+    }
+    20%{
+        transform: rotate(72deg) translate(40%,var(--y));
+    }
+    40%{
+        transform: rotate(144deg) translate(var(--x),10%);
+    }
+    60%{
+        transform: rotate(216deg)  translate(50%,var(--x));
+    }
+    80%{
+        transform: rotate(288deg)   translate( - var(--y),var(--y));
+    }
+    100%{
+        transform: rotate(360deg) translate(var(--x),0);
+    }
+}
+
+/* so now we still need some styles and moovement to the title part */
+
+.Title{
+    font-family: cursive;
+    /* border: groove; */
+    width: max-content;
+    padding: 70px;
+    background: radial-gradient(  #ff616192 , white);
+    animation-name: preloader_title;
+    font-weight: bolder;
+    /* border-radius: 20%; */
+    color: maroon;
+    animation-iteration-count: 1;
+    animation-duration: 3s;
+    top:30%;
+    position: relative;    
+    left:40%;
+    font-size: 30px;
+    z-index: -1;
+    /* animation-delay: 2s; */
+}
+
+@keyframes preloader_title{
+    /* at the beginning, the title is not visible, so opacity is 0 */
+    0%{
+        opacity: 0;
+    }
+    /* then it should start appearing from behind the leafs, so we make z-index -1 */
+    /* and finaly after 40% of the animation, it will go back as it was, where it's opacity 1 */
+    20%, 40%{
+        opacity: 0;
+        top:30%;
+        left:30%;
+    }
+    100%{
+
+    }
+}
+
+
+/* i hope you like this video, please like and subscribe :) */
